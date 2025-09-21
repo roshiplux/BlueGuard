@@ -1,9 +1,12 @@
+import { BottomTabs } from '@/components/bottom-tabs';
+import { OceanBackground } from '@/components/ocean-background';
 import { ThemedView } from '@/components/themed-view';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function Awareness() {
   return (
-    <ThemedView style={styles.container}>
+    <OceanBackground>
+      <ThemedView style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>Ocean Awareness</Text>
         <Text style={styles.subtitle}>Learn about marine conservation</Text>
@@ -28,15 +31,17 @@ export default function Awareness() {
             8 million tons of plastic waste enter our oceans every year, threatening marine ecosystems.
           </Text>
         </View>
-      </ScrollView>
-    </ThemedView>
+        </ScrollView>
+        <BottomTabs currentTab="awareness" />
+      </ThemedView>
+    </OceanBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f7f8',
+    backgroundColor: 'rgba(245, 247, 248, 0.9)',
   },
   content: {
     padding: 20,

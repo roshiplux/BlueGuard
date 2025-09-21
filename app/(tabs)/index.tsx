@@ -1,11 +1,13 @@
 import { BottomTabs } from '@/components/bottom-tabs';
+import { OceanBackground } from '@/components/ocean-background';
 import { ThemedView } from '@/components/themed-view';
 import { Link } from 'expo-router';
 import { ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeDashboard() {
   return (
-    <ThemedView style={styles.container}>
+    <OceanBackground>
+      <ThemedView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Header */}
         <View style={styles.header}>
@@ -75,17 +77,18 @@ export default function HomeDashboard() {
             <Text style={styles.statLabel}>Friends Joined</Text>
           </View>
         </View>
-      </ScrollView>
-      
-      <BottomTabs currentTab="home" />
-    </ThemedView>
+        </ScrollView>
+        
+        <BottomTabs currentTab="home" />
+      </ThemedView>
+    </OceanBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f7f8',
+    backgroundColor: 'rgba(245, 247, 248, 0.9)',
   },
   scrollContent: {
     padding: 16,

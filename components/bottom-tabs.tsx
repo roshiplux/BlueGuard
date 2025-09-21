@@ -13,15 +13,17 @@ export function BottomTabs({ currentTab }: BottomTabsProps) {
     
     switch (tab) {
       case 'home':
-        return pathname === '/(tabs)' || pathname === '/(tabs)/';
+        return pathname === '/(tabs)' || pathname === '/(tabs)/' || pathname === '/(tabs)/index';
       case 'awareness':
         return pathname.includes('awareness');
       case 'actions':
-        return pathname.includes('actions');
+        return pathname === '/actions';
       case 'community':
-        return pathname.includes('community');
+        return pathname === '/community';
       case 'profile':
-        return pathname.includes('profile');
+        return pathname === '/profile';
+      case 'about':
+        return pathname === '/about';
       default:
         return false;
     }
@@ -36,7 +38,7 @@ export function BottomTabs({ currentTab }: BottomTabsProps) {
         </TouchableOpacity>
       </Link>
       
-      <Link href="/awareness-list" asChild>
+      <Link href="/awareness" asChild>
         <TouchableOpacity style={[styles.tabItem, isActive('awareness') && styles.activeTab]}>
           <Text style={[styles.tabEmoji, isActive('awareness') && styles.activeEmoji]}>💧</Text>
           <Text style={[styles.tabLabel, isActive('awareness') && styles.activeLabel]}>Awareness</Text>
@@ -63,6 +65,13 @@ export function BottomTabs({ currentTab }: BottomTabsProps) {
           <Text style={[styles.tabLabel, isActive('profile') && styles.activeLabel]}>Profile</Text>
         </TouchableOpacity>
       </Link>
+      
+      <Link href="/about" asChild>
+        <TouchableOpacity style={[styles.tabItem, isActive('about') && styles.activeTab]}>
+          <Text style={[styles.tabEmoji, isActive('about') && styles.activeEmoji]}>ℹ️</Text>
+          <Text style={[styles.tabLabel, isActive('about') && styles.activeLabel]}>About</Text>
+        </TouchableOpacity>
+      </Link>
     </View>
   );
 }
@@ -74,33 +83,36 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#e5e7eb',
     paddingVertical: 8,
-    paddingHorizontal: 4,
+    paddingHorizontal: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 5,
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
   tabItem: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 6,
+    paddingHorizontal: 2,
     borderRadius: 8,
-    marginHorizontal: 2,
+    minWidth: 50,
   },
   activeTab: {
     backgroundColor: 'rgba(0, 122, 184, 0.1)',
   },
   tabEmoji: {
-    fontSize: 20,
-    marginBottom: 2,
+    fontSize: 18,
+    marginBottom: 1,
   },
   activeEmoji: {
     transform: [{ scale: 1.1 }],
   },
   tabLabel: {
-    fontSize: 10,
+    fontSize: 9,
     color: '#666',
     fontWeight: '500',
   },

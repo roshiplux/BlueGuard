@@ -1,4 +1,6 @@
+import { BottomTabs } from '@/components/bottom-tabs';
 import { ThemedView } from '@/components/themed-view';
+import { Link } from 'expo-router';
 import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Profile() {
@@ -83,6 +85,14 @@ export default function Profile() {
             <Text style={styles.menuArrow}>›</Text>
           </TouchableOpacity>
           
+          <Link href="/about" asChild>
+            <TouchableOpacity style={styles.menuItem}>
+              <Text style={styles.menuEmoji}>ℹ️</Text>
+              <Text style={styles.menuText}>About</Text>
+              <Text style={styles.menuArrow}>›</Text>
+            </TouchableOpacity>
+          </Link>
+          
           <TouchableOpacity style={styles.menuItem}>
             <Text style={styles.menuEmoji}>📊</Text>
             <Text style={styles.menuText}>Statistics</Text>
@@ -102,6 +112,7 @@ export default function Profile() {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      <BottomTabs currentTab="profile" />
     </ThemedView>
   );
 }
